@@ -1,0 +1,15 @@
+entrypoints Formula ;
+FEqu.   Formula1 ::= Formula2 "<=>" Formula2 ;
+FRImpl. Formula2 ::= Formula3 "==>" Formula3 ;
+FLImpl. Formula2 ::= Formula3 "<==" Formula3 ;
+FAnd.   Formula3 ::= Formula4 "and" Formula4 ;
+FOr.    Formula4 ::= Formula5 "or" Formula5 ;
+FXOr.   Formula5 ::= Formula6 "xor" Formula6 ;
+FNot.   Formula6 ::= "not" Formula7 ;
+FVar.   Formula7 ::= Variable ;
+
+coercions Formula 7 ;
+
+Var.    Variable ::= String ;
+
+
