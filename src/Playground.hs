@@ -8,6 +8,7 @@ import qualified FromBNFC.PrintQFBF as Print
 
 import MyCode.PushNegation
 import MyCode.Disassemble
+import MyCode.ToCNF
 
 
 testDir :: Int -> String
@@ -16,9 +17,16 @@ testDir i
   | otherwise = "../test/test" ++ (show i) ++ ".bf"
 
 
+toCNFAndBack :: Formula -> Err Formula
+toCNFAndBack formula = do
+  cnfForm <- (toCNF . pushNegationDeep . disassembleDeep) formula
+  
+  backToFormula cnfForm
 
 tempTest i toTest = readTestNShow (testDir i) toTest prettyPrint
 tempTestCombo i = do
+  readTestNShow (testDir i) toCNFAndBack (getStr prettyPrint)
+
   tempTest i $ pushNegationDeep . disassembleDeep
   tempTest i disassembleDeep
   tempTest i id
