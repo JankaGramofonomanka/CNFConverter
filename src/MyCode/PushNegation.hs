@@ -16,7 +16,7 @@ pushNegation (Not formula) = case formula of
     LImpl f1 f2 -> (Not f1) `And` f2
 
     -- not (f1 and f2) ~ (not f1) or (not f2)
-    And f1 f2   -> (Not f1) `And` (Not f2)
+    And f1 f2   -> (Not f1) `Or` (Not f2)
 
     -- not (f1 or f2) ~ (not f1) and (not f2)
     Or f1 f2    -> (Not f1) `And` (Not f2)

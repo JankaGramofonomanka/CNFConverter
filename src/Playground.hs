@@ -10,9 +10,11 @@ import MyCode.PushNegation
 import MyCode.Disassemble
 import MyCode.ToCNF
 import MyCode.VariableCollection
+import MyCode.PrintCNF
 
 import Test.Evaluation
 import Test.Naive
+
 
 
 testDir :: Int -> String
@@ -28,13 +30,32 @@ toCNFAndBack formula = do
   backToFormula cnfForm
 
 
+toCadical :: Formula -> Err String
+toCadical formula = do
+  cnfForm <- (toCNF . pushNegationDeep . disassembleDeep) formula
+  let varSet = collectVariables formula
+  cadicalPrint varSet cnfForm 4
+
+toHumanFriendly :: Formula -> Err String
+toHumanFriendly formula = do
+  cnfForm <- (toCNF . pushNegationDeep . disassembleDeep) formula
+  let varSet = collectVariables formula
+  humanFriendlyPrint varSet cnfForm 4
+
+
 tempTest i toTest = readTestNShow (testDir i) toTest prettyPrint
 tempTestCombo i = do
+  readTestNShow (testDir i) toHumanFriendly (getStr id)
+  putStrLn ""
+  readTestNShow (testDir i) toCadical (getStr id)
+
   readTestNShow (testDir i) toCNFAndBack (getStr prettyPrint)
 
   tempTest i $ pushNegationDeep . disassembleDeep
   tempTest i disassembleDeep
   tempTest i id
+
+
 
 lexer = Par.myLexer
 parser = Par.pFormula

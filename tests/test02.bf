@@ -1,1 +1,1 @@
-p and not (p or q)
+(not p) ==> (p and q)
