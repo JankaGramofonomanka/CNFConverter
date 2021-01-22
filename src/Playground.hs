@@ -9,6 +9,7 @@ import qualified FromBNFC.PrintQFBF as Print
 import MyCode.PushNegation
 import MyCode.Disassemble
 import MyCode.ToCNF
+import MyCode.VariableCollection
 
 
 testDir :: Int -> String
