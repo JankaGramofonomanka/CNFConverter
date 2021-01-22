@@ -11,6 +11,9 @@ import MyCode.Disassemble
 import MyCode.ToCNF
 import MyCode.VariableCollection
 
+import Test.Evaluation
+import Test.Naive
+
 
 testDir :: Int -> String
 testDir i
@@ -23,6 +26,7 @@ toCNFAndBack formula = do
   cnfForm <- (toCNF . pushNegationDeep . disassembleDeep) formula
   
   backToFormula cnfForm
+
 
 tempTest i toTest = readTestNShow (testDir i) toTest prettyPrint
 tempTestCombo i = do
