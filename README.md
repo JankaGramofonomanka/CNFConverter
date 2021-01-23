@@ -14,21 +14,30 @@ $ make
 ```
 
 ## Przyładowe użycie
-konwersja formuły i wypisanie w konsoli:
+Konwersja formuły i wypisanie w konsoli:
 ```
 $ ./tocnf "(p ==> q) <=> (not p or q)"
 ```
 
-konwersja formuły "przekazanie" sat-solverowi:
+Konwersja formuły "przekazanie" sat-solverowi:
 ```
 $ ./tocnf "(p ==> q) <=> (not p or q)" | path/to/cadical
 ```
 
-wypisanie w czytelnym dla człowieka formacie:
+Wypisanie w czytelnym dla człowieka formacie:
 ```
 $ ./tocnf "(p ==> q) <=> (not p or q)" --human-friendly
 ```
 
+Konwersja zaprzeczenia formuły
+```
+$ ./tocnf "(p ==> q) <=> (not p or q)" --contradict
+```
+
+Wczytanie z pliku i zapisanie w pliku
+```
+$ ./tocnf -o putput.bf -f input.bf
+```
 
 ## Więcej opcji
 ```
