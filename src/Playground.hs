@@ -15,14 +15,16 @@ import MyCode.PrintCNF
 import Test.Evaluation
 import Test.Naive
 
+import qualified Main as M
 
 
+-------------------------------------------------------------------------------
 testDir :: Int -> String
 testDir i
   | i < 10    = "../tests/test0" ++ (show i) ++ ".bf"
   | otherwise = "../test/test" ++ (show i) ++ ".bf"
 
-
+-------------------------------------------------------------------------------
 toCNFAndBack :: Formula -> Err Formula
 toCNFAndBack formula = do
   cnfForm <- (toCNF . pushNegationDeep . disassembleDeep) formula
@@ -56,7 +58,7 @@ tempTestCombo i = do
   tempTest i id
 
 
-
+-------------------------------------------------------------------------------
 lexer = Par.myLexer
 parser = Par.pFormula
 
@@ -90,4 +92,17 @@ readTestNShow filename funcToTest printFunc = do
 
   putStrLn toShow
     
+
+-------------------------------------------------------------------------------
+testMainF :: String -> IO ()
+testMainF filename = do
+  fileCts <- readFile filename
+  putStrLn fileCts
+  toShow <- M.getErr $ M.compileToCNF fileCts
+
+  putStrLn $ show toShow
+
+
+
+
 
