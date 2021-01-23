@@ -77,9 +77,9 @@ cadicalPrint varSet clauses tabLength = do
   let printLitFunc = printLiteral varMap "-" tabLength
 
   let headline = makeHeadLine numVars numClauses
-  cnfPrint <- printCNF printLitFunc " 0\n" " " clauses
+  cnfPrint <- printCNF printLitFunc "  0\n" " " clauses
 
-  return $ headline ++ "\n" ++ cnfPrint ++ " 0\n"
+  return $ headline ++ "\n" ++ cnfPrint ++ "  0\n"
 
   where
     makeVMap vSet = vMap where
