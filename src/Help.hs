@@ -14,7 +14,7 @@ helpMsg = "\
 \      - read the formula in quotes and display output in the console\n\ 
 \\n\
 \  ./tocnf -f input.bf -o output.bf\n\
-\      - read the formula from the file input.bf and write it in output.bf\n\ 
+\      - read the formula from input.bf and write the output in output.bf\n\ 
 \\n\
 \Input form:\n\
 \  Example: (p ==> q) <=> (not p or q)\n\
