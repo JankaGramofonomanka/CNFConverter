@@ -36,6 +36,8 @@ helpMsg = "\
 \  -o [DIR]               write output to DIR\n\
 \  -f [DIR]               read input from DIR\n\
 \\n\
+\  --contradict           convert the contradiction of the input formula\n\
+\\n\
 \  --human-friendly     |\n\
 \  --human              |\n\
 \  --friendly           | display output in human friendly form\n\

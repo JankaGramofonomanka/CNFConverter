@@ -1,5 +1,0 @@
-#!/bin/bash
-
-make distclean
-bnfc -m -p FromBNFC QFBF.cf
-make

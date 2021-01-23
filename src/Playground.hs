@@ -45,13 +45,13 @@ toHumanFriendly formula = do
   humanFriendlyPrint varSet cnfForm 4
 
 
-tempTest i toTest = readTestNShow (testDir i) toTest prettyPrint
+tempTest i toTest = readTestNShow (testDir i) toTest (prettyPrint 0)
 tempTestCombo i = do
   readTestNShow (testDir i) toHumanFriendly (getStr id)
   putStrLn ""
   readTestNShow (testDir i) toCadical (getStr id)
 
-  readTestNShow (testDir i) toCNFAndBack (getStr prettyPrint)
+  readTestNShow (testDir i) toCNFAndBack (getStr $ prettyPrint 0)
 
   tempTest i $ pushNegationDeep . disassembleDeep
   tempTest i disassembleDeep
@@ -64,8 +64,8 @@ parser = Par.pFormula
 
 
 
-prettyPrint :: Print.Print a => a -> String
-prettyPrint toShow = Print.render $ Print.prt 0 toShow
+prettyPrint :: Print.Print a => Int -> a -> String
+prettyPrint i toShow = Print.render $ Print.prt i toShow
 
 --justParse :: String -> Err Formula
 --justParse = parser . lexer
